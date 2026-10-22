@@ -4,8 +4,8 @@ const GATEWAY_URL = "https://connector-gateway.lovable.dev/github";
 export const REPO = "minhohuengmin1010-hue/vortex-main-web-1";
 
 async function gh(path: string) {
-  const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
-  const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
+  const LOVABLE_API_KEY = process.env["LOVABLE_API_KEY"];
+  const GITHUB_API_KEY = process.env["GITHUB_API_KEY"];
   if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
   if (!GITHUB_API_KEY) throw new Error("GITHUB_API_KEY is not configured");
   const res = await fetch(`${GATEWAY_URL}/${path}`, {
