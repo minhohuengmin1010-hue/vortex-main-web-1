@@ -66,7 +66,7 @@ function Dashboard() {
       </section>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_340px]">
-        <section className="panel p-4 md:p-5">
+        <section className="panel min-w-0 p-4 md:p-5">
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -103,7 +103,7 @@ function Dashboard() {
           )}
         </section>
 
-        <aside className="panel p-4 md:p-5">
+        <aside className="panel min-w-0 p-4 md:p-5">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold">GitHub activity</h2>
             {data && <a href={data.url} target="_blank" rel="noreferrer" className="font-mono text-xs text-primary hover:underline">open repo ↗</a>}
@@ -117,7 +117,7 @@ function Dashboard() {
                 {data.commits.length === 0 && <li className="text-sm text-muted-foreground">No commits yet.</li>}
                 {data.commits.map((c) => (
                   <li key={c.sha} className="border-l-2 border-primary/50 pl-3">
-                    <a href={c.url} target="_blank" rel="noreferrer" className="line-clamp-2 text-sm hover:text-primary">{c.message}</a>
+                    <a href={c.url} target="_blank" rel="noreferrer" className="line-clamp-2 break-all text-sm hover:text-primary">{c.message}</a>
                     <p className="font-mono text-[11px] text-muted-foreground">{c.sha} · {c.author} · {timeAgo(c.date)}</p>
                   </li>
                 ))}
