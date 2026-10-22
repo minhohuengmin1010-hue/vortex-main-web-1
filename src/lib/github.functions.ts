@@ -54,7 +54,7 @@ export const getRepoSummary = createServerFn({ method: "GET" }).handler(
       sizeKb: repo.size,
       commits: (Array.isArray(commits) ? commits : []).map((c: any) => ({
         sha: String(c.sha).slice(0, 7),
-        message: String(c.commit?.message ?? "").split("\n")[0],
+        message: String(c.commit?.message ?? "").split("\n")[0] ?? "",
         author: c.commit?.author?.name ?? "unknown",
         date: c.commit?.author?.date ?? "",
         url: c.html_url,

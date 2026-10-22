@@ -34,9 +34,9 @@ function timeAgo(iso: string) {
 
 function Dashboard() {
   const { data, isLoading, error } = useQuery(repoQuery);
-  const [active, setActive] = useState(MENUS[0].id);
+  const [active, setActive] = useState(MENUS[0]!.id);
   const [search, setSearch] = useState("");
-  const menu = MENUS.find((m) => m.id === active)!;
+  const menu = MENUS.find((m) => m.id === active) ?? MENUS[0]!;
   const totalCmds = MENUS.reduce((n, m) => n + m.commands.length, 0);
   const filtered = search
     ? MENUS.flatMap((m) => m.commands.filter((c) => c.cmd.includes(search.toLowerCase()) || c.desc.toLowerCase().includes(search.toLowerCase())).map((c) => ({ ...c, menu: m })))
