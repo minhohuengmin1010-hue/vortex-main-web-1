@@ -38,8 +38,9 @@ function Dashboard() {
   const [search, setSearch] = useState("");
   const menu = MENUS.find((m) => m.id === active) ?? MENUS[0]!;
   const totalCmds = MENUS.reduce((n, m) => n + m.commands.length, 0);
+  const q = search.toLowerCase();
   const filtered = search
-    ? MENUS.flatMap((m) => m.commands.filter((c) => c.cmd.includes(search.toLowerCase()) || c.desc.toLowerCase().includes(search.toLowerCase())).map((c) => ({ ...c, menu: m })))
+    ? MENUS.flatMap((m) => m.commands.filter((c) => c.cmd.includes(q) || m.title.toLowerCase().includes(q)).map((c) => ({ ...c, menu: m })))
     : null;
 
   return (
