@@ -139,6 +139,21 @@ function Dashboard() {
                   className="mt-4 aspect-video w-full rounded-lg border border-border object-cover"
                 />
               )}
+              {menu.id === "welcome" && (
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {WELCOME_GALLERY.slice(1).map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Welcome artwork ${i + 2}`}
+                      loading="lazy"
+                      width={1088}
+                      height={608}
+                      className="aspect-video w-full rounded-lg border border-border object-cover"
+                    />
+                  ))}
+                </div>
+              )}
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.desc} />)}
               </ul>
