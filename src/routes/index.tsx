@@ -31,7 +31,10 @@ const MENU_IMAGES: Record<string, string> = {
   pokemon: pokemonImg,
   dbz: dbzImg,
   ben10: ben10Img,
+  welcome: welcomeImg,
 };
+
+const WELCOME_GALLERY = [welcomeImg, welcome2Img, welcome3Img, welcome4Img];
 
 const repoQuery = queryOptions({
   queryKey: ["repo"],
