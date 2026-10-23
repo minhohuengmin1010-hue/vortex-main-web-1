@@ -14,6 +14,10 @@ import sinsImg from "@/assets/menus/sins.jpg";
 import pokemonImg from "@/assets/menus/pokemon.jpg";
 import dbzImg from "@/assets/menus/dbz.jpg";
 import ben10Img from "@/assets/menus/ben10.jpg";
+import welcomeImg from "@/assets/menus/welcome.jpg";
+import welcome2Img from "@/assets/menus/welcome2.jpg";
+import welcome3Img from "@/assets/menus/welcome3.jpg";
+import welcome4Img from "@/assets/menus/welcome4.jpg";
 
 const MENU_IMAGES: Record<string, string> = {
   cards: cardsImg,
