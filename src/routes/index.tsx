@@ -14,6 +14,10 @@ import sinsImg from "@/assets/menus/sins.jpg";
 import pokemonImg from "@/assets/menus/pokemon.jpg";
 import dbzImg from "@/assets/menus/dbz.jpg";
 import ben10Img from "@/assets/menus/ben10.jpg";
+import welcomeImg from "@/assets/menus/welcome.jpg";
+import welcome2Img from "@/assets/menus/welcome2.jpg";
+import welcome3Img from "@/assets/menus/welcome3.jpg";
+import welcome4Img from "@/assets/menus/welcome4.jpg";
 
 const MENU_IMAGES: Record<string, string> = {
   cards: cardsImg,
@@ -27,7 +31,10 @@ const MENU_IMAGES: Record<string, string> = {
   pokemon: pokemonImg,
   dbz: dbzImg,
   ben10: ben10Img,
+  welcome: welcomeImg,
 };
+
+const WELCOME_GALLERY = [welcomeImg, welcome2Img, welcome3Img, welcome4Img];
 
 const repoQuery = queryOptions({
   queryKey: ["repo"],
@@ -131,6 +138,21 @@ function Dashboard() {
                   height={608}
                   className="mt-4 aspect-video w-full rounded-lg border border-border object-cover"
                 />
+              )}
+              {menu.id === "welcome" && (
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {WELCOME_GALLERY.slice(1).map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Welcome artwork ${i + 2}`}
+                      loading="lazy"
+                      width={1088}
+                      height={608}
+                      className="aspect-video w-full rounded-lg border border-border object-cover"
+                    />
+                  ))}
+                </div>
               )}
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.desc} />)}
