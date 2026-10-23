@@ -77,7 +77,7 @@ function Dashboard() {
           {filtered ? (
             <ul className="mt-4 space-y-2">
               {filtered.length === 0 && <li className="text-sm text-muted-foreground">No commands found.</li>}
-              {filtered.map((c) => <CmdRow key={c.menu.id + c.cmd} cmd={c.cmd} desc={`${c.menu.emoji} ${c.desc}`} />)}
+              {filtered.map((c) => <CmdRow key={c.menu.id + c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.menu.title} />)}
             </ul>
           ) : (
             <>
@@ -98,7 +98,7 @@ function Dashboard() {
               </div>
               <p className="text-sm text-muted-foreground">{menu.blurb}</p>
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} desc={c.desc} />)}
+                {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.desc} />)}
               </ul>
             </>
           )}
@@ -140,11 +140,12 @@ function Stat({ label, value }: { label: string; value: string | number }) {
   );
 }
 
-function CmdRow({ cmd, desc }: { cmd: string; desc: string }) {
+function CmdRow({ cmd, emoji, desc }: { cmd: string; emoji: string; desc?: string }) {
   return (
     <li className="flex items-center gap-3 rounded-lg border border-border bg-background/40 px-3 py-2">
+      <span aria-hidden>{emoji}</span>
       <code className="font-mono text-sm font-semibold text-primary">{PREFIX}{cmd}</code>
-      <span className="truncate text-sm text-muted-foreground">{desc}</span>
+      {desc && <span className="truncate text-sm text-muted-foreground">{desc}</span>}
     </li>
   );
 }
