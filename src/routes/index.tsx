@@ -3,6 +3,31 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getRepoSummary } from "@/lib/github.functions";
 import { MENUS, PREFIX } from "@/lib/menus";
+import cardsImg from "@/assets/menus/cards.jpg";
+import cardduelImg from "@/assets/menus/cardduel.jpg";
+import demonslayerImg from "@/assets/menus/demonslayer.jpg";
+import borutoImg from "@/assets/menus/boruto.jpg";
+import narutoImg from "@/assets/menus/naruto.jpg";
+import soloImg from "@/assets/menus/solo.jpg";
+import mhaImg from "@/assets/menus/mha.jpg";
+import sinsImg from "@/assets/menus/sins.jpg";
+import pokemonImg from "@/assets/menus/pokemon.jpg";
+import dbzImg from "@/assets/menus/dbz.jpg";
+import ben10Img from "@/assets/menus/ben10.jpg";
+
+const MENU_IMAGES: Record<string, string> = {
+  cards: cardsImg,
+  cardduel: cardduelImg,
+  demonslayer: demonslayerImg,
+  boruto: borutoImg,
+  naruto: narutoImg,
+  solo: soloImg,
+  mha: mhaImg,
+  sins: sinsImg,
+  pokemon: pokemonImg,
+  dbz: dbzImg,
+  ben10: ben10Img,
+};
 
 const repoQuery = queryOptions({
   queryKey: ["repo"],
