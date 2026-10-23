@@ -122,6 +122,16 @@ function Dashboard() {
                 <span className="font-mono text-xs text-muted-foreground">{menu.commands.length} cmds</span>
               </div>
               <p className="text-sm text-muted-foreground">{menu.blurb}</p>
+              {MENU_IMAGES[menu.id] && (
+                <img
+                  src={MENU_IMAGES[menu.id]}
+                  alt={`${menu.title} artwork`}
+                  loading="lazy"
+                  width={1088}
+                  height={608}
+                  className="mt-4 aspect-video w-full rounded-lg border border-border object-cover"
+                />
+              )}
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.desc} />)}
               </ul>
