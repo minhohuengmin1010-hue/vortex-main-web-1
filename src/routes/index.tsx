@@ -140,7 +140,7 @@ function Stat({ label, value }: { label: string; value: string | number }) {
   );
 }
 
-function CmdRow({ cmd, emoji, desc }: { cmd: string; emoji: string; desc?: string }) {
+function CmdRow({ cmd, emoji, desc }: { cmd: string; emoji: string; desc?: string | undefined }) {
   return (
     <li className="flex items-center gap-3 rounded-lg border border-border bg-background/40 px-3 py-2">
       <span aria-hidden>{emoji}</span>
