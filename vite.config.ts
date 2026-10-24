@@ -2,10 +2,6 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const tr46Shim = fileURLToPath(
-  new URL("./src/lib/tr46-shim.cjs", import.meta.url)
-);
-
 export default defineConfig({
   nitro: { preset: "node-server" },
 
@@ -32,15 +28,9 @@ export default defineConfig({
     },
 
     resolve: {
-      alias: [
-        { find: /^tr46$/, replacement: tr46Shim },
-        {
-          find: /^lucide-react$/,
-          replacement: fileURLToPath(
-            new URL("./src/lib/lucide-icons.ts", import.meta.url)
-          ),
-        },
-      ],
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+      },
     },
   },
 });
