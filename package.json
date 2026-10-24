@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.22.2 <23"
   },
   "scripts": {
     "start": "node .output/server/index.mjs",
@@ -13,6 +13,7 @@
     "build:dev": "vite build --mode development",
     "preview": "node .output/server/index.mjs",
     "lint": "eslint .",
+    "test": "vitest run",
     "format": "prettier --write ."
   },
   "dependencies": {
@@ -72,8 +73,13 @@
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.24.2",
+    "zod": "^4.6.7",
     "nitro": "3.0.260603-beta"
+  },
+  "overrides": {
+    "source-map-js": "^1.2.2",
+    "js-yaml": "^4.3.2",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

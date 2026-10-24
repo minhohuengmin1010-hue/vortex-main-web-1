@@ -66,9 +66,10 @@ function timeAgo(iso: string) {
 
 function Dashboard() {
   const { data, isLoading, error } = useQuery(repoQuery);
-  const [active, setActive] = useState(MENUS[0]!.id);
+  const [active, setActive] = useState(MENUS[0]?.id ?? "main");
   const [search, setSearch] = useState("");
-  const menu = MENUS.find((m) => m.id === active) ?? MENUS[0]!;
+  const menu = MENUS.find((m) => m.id === active) ?? MENUS[0];
+  if (!menu) return <main className="p-6">No menus available.</main>;
   const totalCmds = MENUS.reduce((n, m) => n + m.commands.length, 0);
   const q = search.toLowerCase();
   const filtered = search
@@ -86,8 +87,8 @@ function Dashboard() {
           <h1 className="text-2xl font-bold md:text-3xl"><span className="text-vortex">Vortex</span> Control</h1>
           <p className="truncate font-mono text-xs text-muted-foreground">WhatsApp group bot · prefix “{PREFIX}”</p>
         </div>
-        <span className="ml-auto flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-success">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-success" /> online
+        <span className="ml-auto flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
+          status unknown
         </span>
       </header>
 
