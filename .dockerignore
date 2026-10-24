@@ -1,0 +1,11 @@
+node_modules
+.output
+dist
+.git
+.env
+.env.*
+!.env.example
+.lovable
+.workspace
+/roadmap.md
+pnpm-lock.yaml
