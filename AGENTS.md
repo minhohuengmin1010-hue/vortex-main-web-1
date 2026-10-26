@@ -9,7 +9,7 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Render deploys the dashboard as a Docker web service with Nitro's Node-server output; the container uses the Render-assigned PORT and binds all interfaces.
+- Render deploys the dashboard and separate bot as native Node web services; both use Render's PORT and bind all interfaces, avoiding Docker.
 - Use bun.lock with frozen Bun installs for reproducible builds; do not introduce a second package-manager lockfile.
 - Keep deployment health checks public, read-only, and independent of third-party credentials so external outages do not restart the service.
-- This repository is a dashboard, not a WhatsApp bot runtime; never present a live bot status without a real status source.
+- Keep the native WhatsApp runtime under services/vortex-bot outside the dashboard import graph; dashboard menus are references, not proof of implemented bot handlers or live status.

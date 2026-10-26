@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Remove Docker files and configure native Node.js Render services
+- [ ] Finish the separate bot startup and verify its local health and command flow
+- [ ] Verify card, creature and anime images in the dashboard
 - [x] Fix verified project errors and prepare a reproducible Render deployment
 - [x] Create cool anime welcome images and wire into the dashboard (Group Welcome & Banners menu)
 - [ ] Complete and verify the live Render deployment — blocked: user must connect the source repository in Render and approve its service plan
