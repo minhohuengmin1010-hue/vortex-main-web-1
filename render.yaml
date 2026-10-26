@@ -1,12 +1,46 @@
 services:
   - type: web
     name: vortex-dashboard
-    runtime: docker
+    runtime: node
     plan: starter
-    dockerfilePath: ./Dockerfile
+    buildCommand: bun install --frozen-lockfile && bun run build
+    startCommand: node .output/server/index.mjs
     healthCheckPath: /api/public/health
     envVars:
+      - key: NODE_VERSION
+        value: 22.22.2
+      - key: BUN_VERSION
+        value: 1.4.4
       - key: NODE_ENV
         value: production
       - key: HOST
         value: 0.0.0.0
+  - type: web
+    name: vortex-bot
+    runtime: node
+    plan: starter
+    rootDir: services/vortex-bot
+    buildCommand: bun install --frozen-lockfile
+    startCommand: node src/server.mjs
+    healthCheckPath: /health
+    disk:
+      name: vortex-sessions
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.2
+      - key: BUN_VERSION
+        value: 1.4.4
+      - key: AUTH_ENCRYPTION_KEY
+        generateValue: true
+      - key: PAIRING_ACCESS_TOKEN
+        generateValue: true
+      - key: PAIRING_SITE_ORIGIN
+        sync: false
+      - key: ALLOWED_PAIR_NUMBERS
+        value: "2349016077157"
+      - key: ALLOWED_GROUP_JIDS
+        sync: false
+      - key: DATA_DIR
+        value: /var/data/vortex
