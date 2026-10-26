@@ -3,6 +3,10 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getRepoSummary } from "@/lib/github.functions";
 import { MENUS, PREFIX } from "@/lib/menus";
+import { Button } from "@/components/ui/button";
+import guardianImg from "@/assets/menus/card-guardian.jpg";
+import creatureDuelImg from "@/assets/menus/creature-duel.jpg";
+import animeDuelImg from "@/assets/menus/anime-duel.jpg";
 import cardsImg from "@/assets/menus/cards.jpg";
 import cardduelImg from "@/assets/menus/cardduel.jpg";
 import demonslayerImg from "@/assets/menus/demonslayer.jpg";
@@ -116,13 +120,15 @@ function Dashboard() {
             <>
               <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
                 {MENUS.map((m) => (
-                  <button
+                  <Button
                     key={m.id}
+                    variant="outline"
+                    size="sm"
                     onClick={() => setActive(m.id)}
                     className={`shrink-0 rounded-full border px-3 py-1.5 text-sm transition ${m.id === active ? "border-transparent bg-vortex font-semibold text-primary-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}
                   >
                     {m.emoji} {m.title}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <div className="mt-5 flex items-baseline justify-between">
@@ -154,6 +160,15 @@ function Dashboard() {
                     />
                   ))}
                 </div>
+              )}
+              {(menu.id === "cards" || menu.id === "cardduel") && (
+                <img src={guardianImg} alt="Original wind guardian collectible card artwork" loading="lazy" width={768} height={1024} className="mt-3 aspect-[3/4] w-full max-w-64 rounded-lg border border-border object-cover" />
+              )}
+              {menu.id === "pokemon" && (
+                <img src={creatureDuelImg} alt="Original crystal lynx and ember salamander battle artwork" loading="lazy" width={1088} height={608} className="mt-3 aspect-video w-full rounded-lg border border-border object-cover" />
+              )}
+              {["demonslayer", "boruto", "naruto", "solo", "mha", "sins", "dbz", "ben10"].includes(menu.id) && (
+                <img src={animeDuelImg} alt="Original swordswoman and spear fighter battle artwork" loading="lazy" width={1088} height={608} className="mt-3 aspect-video w-full rounded-lg border border-border object-cover" />
               )}
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {menu.commands.map((c) => <CmdRow key={c.cmd} cmd={c.cmd} emoji={c.emoji} desc={c.desc} />)}
